@@ -7,14 +7,20 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      ll = "ls -liah";
       update = "nh os switch /home/viking/.config/nixos/";
       home = "nh home switch /home/viking/.config/home-manager/";
-      svim = "sudo -E nvim";
-      vim = "nvim";
+
       vi = "nvim";
+      vim = "nvim";
+      svim = "sudo -E nvim";
+
       cd = "z";
       ":q" = "exit";
+      ls = "exa -lih";
+
+      diff = "batdiff";
+      grep = "batgrep";
+      rg = "batgrep";
     };
 
     history.size = 10000;

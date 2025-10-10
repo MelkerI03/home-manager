@@ -68,7 +68,6 @@
     # LSPs and more
     stylua
     black
-    prettier
     nixfmt
     clang-tools
     stylish-haskell
@@ -79,10 +78,10 @@
 
     # QoL Tools
     eza
-    bat
     fzf
     ripgrep
     btop
+    # bat-extras
     zip
     unzip
     fd
