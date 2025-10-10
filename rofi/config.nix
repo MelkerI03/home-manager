@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 let
   # Fetch the onedark theme from Murzchnvok/rofi-collection
   rofi-onedark-theme = pkgs.stdenv.mkDerivation {
@@ -18,7 +18,6 @@ in
 {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland; # Use Wayland version for Hyprland
     theme = "${rofi-onedark-theme}/share/rofi/themes/onedark.rasi";
     extraConfig = {
       modi = "drun,run,window";

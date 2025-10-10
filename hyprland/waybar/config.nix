@@ -3,25 +3,36 @@
 {
   programs.waybar = {
     enable = true;
-    # package = pkgs.waybar; # Ensure Waybar is installed
 
     settings = {
       mainBar = {
         layer = "top";
         position = "top";
-        height = 30;
-        spacing = 4;
+        height = 48;
+        spacing = 6;
 
-        modules-left = [ "custom/notification" "clock" "tray"];
+        modules-left = [
+          "custom/notification"
+          "clock"
+          "pulseaudio"
+        ];
         modules-center = [ "hyprland/workspaces" ];
-        modules-right = [ "group/expand" "bluetooth" "network" "battery" ];
+        modules-right = [
+          "bluetooth"
+          "network"
+          "power-profiles-daemon"
+          "battery"
+        ];
 
         "hyprland/workspaces" = {
           format = "{icon}";
           format-icons = {
-            active = "";
-            default = "○";
-            empty = "○";
+            "1" = "";
+            "2" = "󰈹";
+            "3" = "";
+            "4" = "󰭹";
+            "active" = "";
+            "default" = "";
           };
           sort-by-number = true;
           persistent-workspaces = {
@@ -32,18 +43,17 @@
         "custom/notification" = {
           tooltip = false;
           format = "";
-          # on-click = "swaync-client -t -sw";
           escape = true;
         };
 
         clock = {
           format = "{:%H:%M:%S} ";
-          interval = 1;  
+          interval = 1;
           tooltip-format = "<tt>{calendar}</tt>";
           calendar = {
-              format = {
-                  today = "<span color='#fAfBfC'><b>{}</b></span>";
-              };
+            format = {
+              today = "<span color='#fAfBfC'><b>{}</b></span>";
+            };
           };
           actions = {
             on-click-right = "shift_down";
@@ -52,46 +62,72 @@
         };
 
         network = {
-            format-wifi = "";
-            format-ethernet = "";
-            format-disconnected =  "";
-            tooltip-format-disconnected = "Error";
-            tooltip-format-wifi = "{essid} ({signalStrength}%) ";
-            tooltip-format-ethernet = "{ifname} 🖧 ";
-            on-click = "kitty sudo nmtui";
+          format-wifi = "󰤨";
+          format-ethernet = "";
+          format-disconnected = "";
+          tooltip-format-disconnected = "Error";
+          tooltip-format-wifi = "{essid} ({signalStrength}%) ";
+          tooltip-format-ethernet = "{ifname} 🖧 ";
+          on-click = "kitty sudo nmtui";
         };
-        
+
+        "pulseaudio" = {
+          format = "{icon} {volume}%";
+          tooltip-format = "{desc} ({volume}%)";
+          tooltip = true;
+          format-muted = " Muted";
+          format-icons = {
+            default = [
+              ""
+              ""
+              ""
+            ];
+          };
+        };
+
         bluetooth = {
-          format-on =  "󰂯";
-          format-off =  "BT-off";
-          format-disabled =  "󰂲";
-          format-connected-battery =  "{device_battery_percentage}% 󰂯";
-          format-alt =  "{device_alias} 󰂯";
-          tooltip-format =  "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
-          tooltip-format-connected =  "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
-          tooltip-format-enumerate-connected =  "{device_alias}\n{device_address}";
-          tooltip-format-enumerate-connected-battery =  "{device_alias}\n{device_address}\n{device_battery_percentage}%";
-          on-click-right =  "blueman-manager";
+          format-on = "󰂯";
+          format-off = "BT-off";
+          format-disabled = "󰂲";
+          format-connected-battery = "{device_battery_percentage}% 󰂯";
+          format-alt = "{device_alias} 󰂯";
+          tooltip-format = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
+          tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+          tooltip-format-enumerate-connected = "{device_alias}\n{device_address}";
+          tooltip-format-enumerate-connected-battery = "{device_alias}\n{device_address}\n{device_battery_percentage}%";
+          on-click = "blueman-manager";
+        };
+
+        power-profiles-daemon = {
+          format = "{icon}";
+          tooltip-format = "{profile}";
+          tooltip = true;
+          format-icons = {
+            default = "";
+            performance = "";
+            balanced = "";
+            "power-saver" = "";
+          };
         };
 
         battery = {
           interval = 30;
           states = {
-              good =  95;
-              warning =  30;
-              critical =  5;
+            good = 95;
+            warning = 30;
+            critical = 5;
           };
-          format =  "{capacity}% {icon}";
-          format-charging =  "{capacity}% 󰂄";
-          format-plugged =  "{capacity}% 󰂄 ";
-          format-alt =  "{time} {icon}";
+          format = "{capacity}% {icon}";
+          format-charging = "{capacity}% 󰂄";
+          format-plugged = "{capacity}% 󰂄 ";
+          format-alt = "{time} {icon}";
           format-icons = [
-              "󰁻"
-          "󰁼"
-          "󰁾"
-          "󰂀"
-          "󰂂"
-          "󰁹"
+            "󰁻"
+            "󰁼"
+            "󰁾"
+            "󰂀"
+            "󰂂"
+            "󰁹"
           ];
         };
 
@@ -101,14 +137,14 @@
         };
 
         "custom/endpoint" = {
-            format = "|";
-            tooltip = false;
+          format = "|";
+          tooltip = false;
         };
       };
     };
 
     style = ''
-      /* @import url('../../.cache/wal/colors-waybar.css'); */
+      @import url('../../.cache/wal/colors-waybar.css');
 
       * {
         font-size:15px;
@@ -121,7 +157,7 @@
 
       .modules-left {
         padding:7px;
-        margin:10 0 5 10;
+        margin:10px 0px 5px 10px;
         border-radius:10px;
         background: alpha(@background,.6);
         box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
@@ -129,7 +165,7 @@
 
       .modules-center {
         padding:7px;
-        margin:10 0 5 0;
+        margin:10px 0px 5px 0px;
         border-radius:10px;
         background: alpha(@background,.6);
         box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
@@ -137,14 +173,14 @@
 
       .modules-right {
         padding:7px;
-        margin: 10 10 5 0;
+        margin: 10px 10px 5px 0px;
         border-radius:10px;
         background: alpha(@background,.6);
         box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
       }
 
-      tooltip {
-        background:@background;
+      #tooltip {
+        background: @background;
         color: @color7;
       }
 
@@ -196,9 +232,9 @@
       }
 
       #workspaces button.empty {
-        color: rgba(0,0,0,0);
+        color: alpha(@color9,.4);
         border: none;
-        text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+        text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
       }
 
       #workspaces button.empty:hover {
@@ -239,7 +275,7 @@
       #battery.warning:not(.charging) {
         color: #ffbe61;
       }
-      
+
       #battery.critical:not(.charging) {
         color: #f53c3c;
         animation-name: blink;

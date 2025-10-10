@@ -4,7 +4,25 @@
     enable = true;
     servers = {
       nixd.enable = true;
-      basedpyright.enable = true;
+      basedpyright = {
+        enable = true;
+        settings.basedpyright.analysis = {
+          typeCheckingMode = "standard";
+        };
+      };
+
+      rust_analyzer = {
+        enable = true;
+        installRustc = true;
+        installCargo = true;
+
+        settings = {
+          check = {
+            command = "clippy";
+          };
+        };
+      };
+
       hls = {
         enable = true;
         installGhc = true;
@@ -24,6 +42,7 @@
         nix = [ "nixfmt" ];
         c = [ "clang-format" ];
         haskell = [ "stylish-haskell" ];
+        rust = [ "rustfmt" ];
       };
     };
   };

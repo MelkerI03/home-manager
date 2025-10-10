@@ -19,13 +19,19 @@
     {
       mode = "n";
       key = "<leader>bl";
-      action = "<cmd>blast<CR>";
+      action = "<cmd>b#<CR>";
       options.silent = true;
     }
     {
       mode = "n";
       key = "<leader>bn";
       action = "<cmd>bnext<CR>";
+      options.silent = true;
+    }
+    {
+      mode = "n";
+      key = "<leader>bd";
+      action = "<cmd>bd<CR>";
       options.silent = true;
     }
     {
@@ -53,7 +59,7 @@
     {
       mode = "n";
       key = "gd";
-      action = "<cmd>Lspsaga peek_definition<CR>";
+      action = "<cmd>lua vim.lsp.buf.definition()<CR>";
       options.silent = true;
     }
     {

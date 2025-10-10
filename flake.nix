@@ -9,23 +9,24 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       home-manager,
       nixvim,
+      ...
     }:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
     in
     {
       homeConfigurations.viking = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./home.nix
+          ./default.nix
           nixvim.homeModules.nixvim
         ];
       };
     };
-
 }
