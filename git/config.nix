@@ -7,9 +7,18 @@
 
     extraConfig = {
       init = {
-        defaultBranch = "main";
+        defaultBranch = "master";
       };
       push.autoSetupRemote = true;
+    };
+
+    delta = {
+      enable = true;
+      options = {
+
+        navigate = true; # use n and N to move between diff sections
+        dark = true; # or light = true, or omit for auto-detection
+      };
     };
   };
 }

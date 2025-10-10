@@ -49,6 +49,7 @@
         scipy
       ]
     ))
+
     (haskellPackages.ghc.withPackages (
       ps: with ps; [
         lens
@@ -58,12 +59,18 @@
         bytestring
         composition
         lens
-        bytestring
       ]
     ))
     zig_0_13
+    gcc
+    cmake
+    ninja
 
-    chromium
+    rustc
+    cargo
+    go
+    lua
+    jq
 
     # LSPs and more
     stylua
@@ -71,26 +78,31 @@
     nixfmt
     clang-tools
     stylish-haskell
+    haskell-language-server
+    cabal2nix
+    hlint
+    vale
+    rust-analyzer
     rustfmt
     clippy
-
-    rust-analyzer
 
     # QoL Tools
     eza
     fzf
+    tree
     ripgrep
     btop
-    # bat-extras
-    zip
-    unzip
+    tealdeer
     fd
     feh
     wev
     xfce.thunar
+    btop
     blueman
     pywal
     wayclip
+    bc
+    eva
 
     # CTF tools
     burpsuite
@@ -120,7 +132,11 @@
     ltrace
     foremost
     zsteg
+    nmap
     tcpflow
+    tcpdump
+    whois
+    ipcalc
     checksec
     ropgadget
     ropr
@@ -156,6 +172,10 @@
       )
     )
 
+    # Productivity
+    libreoffice
+    gimp
+
     # Other
     steam
     lutris
@@ -163,7 +183,6 @@
     vesktop
 
     # TEMPORARY PACKAGES
-    inkscape
   ];
 
   fonts = {

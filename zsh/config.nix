@@ -25,6 +25,15 @@
 
     history.size = 10000;
 
+    sessionVariables = {
+      EDITOR = "nvim";
+      SUDO_EDITOR = "nvim";
+      VISUAL = "nvim";
+      GIT_EDITOR = "nvim";
+      SYSTEMD_EDITOR = "nvim";
+      DIRENV_LOG_FORMAT = "";
+    };
+
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];

@@ -22,6 +22,7 @@ in
     qt6ct
 
     playerctl
+    brightnessctl
     wireplumber
     dunst
     libnotify
