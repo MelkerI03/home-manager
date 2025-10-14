@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./hyprland/config.nix
     ./nixvim/config.nix
     ./direnv/config.nix
     ./kitty/config.nix

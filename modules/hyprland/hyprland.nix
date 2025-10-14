@@ -5,9 +5,9 @@ let
 in
 {
   imports = [
-    ./hyprpaper/config.nix
-    ./hyprlock/config.nix
-    ./waybar/config.nix
+    ./hyprpaper.nix
+    ./hyprlock.nix
+    ./waybar.nix
   ];
 
   home.packages = with pkgs; [

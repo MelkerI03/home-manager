@@ -33,6 +33,7 @@
           };
           modules = [
             ./modules/home-base.nix
+            ./modules/hyprland/hyprland.nix
             ./default.nix
             nixvim.homeModules.nixvim
             nixploit.homeManagerModules.nixploit
