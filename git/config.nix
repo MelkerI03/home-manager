@@ -10,6 +10,8 @@
         defaultBranch = "master";
       };
       push.autoSetupRemote = true;
+
+      pull.rebase = true;
     };
 
     delta = {

@@ -4,36 +4,36 @@
     enable = true;
 
     settings = {
-
       general = {
+        disable_loading_bar = true;
+        grace = 300;
         hide_cursor = true;
+        no_fade_in = false;
       };
 
-      background = {
-        path = "/home/viking/Pictures/Wallpapers/camel.png";
-        blur_passes = 1;
-      };
+      background = [
+        {
+          path = "/home/viking/Pictures/Wallpapers/redmountain.png";
+          blur_passes = 2;
+          blur_size = 8;
+        }
+      ];
 
-      input-field = {
-        size = "300, 60";
-        outline_thickness = 4;
-        dots_size = 0.2;
-        dots_spacing = 0.2;
-        dots_center = true;
-        outer_color = "rgb(cba6f7)";
-        inner_color = "rgb(313244)";
-        font_color = "rgb(cdd6f4)";
-        fade_on_empty = false;
-        placeholder_text = "<span foreground='##cdd6f4'><i>󰌾 Logged in as </i><span foreground='##cba6f7'>viking</span></span>";
-        hide_input = false;
-        check_color = "rgb(cba6f7)";
-        fail_color = "rgb(f38ba8)";
-        fail_text = "<i>$FAIL</i>";
-        capslock_color = "rgb(f9e2af)";
-        position = "0, -47";
-        halign = "center";
-        valign = "center";
-      };
+      input-field = [
+        {
+          size = "200, 50";
+          position = "0, -80";
+          monitor = "";
+          dots_center = true;
+          fade_on_empty = false;
+          font_color = "rgb(202, 211, 245)";
+          inner_color = "rgb(91, 96, 120)";
+          outer_color = "rgb(24, 25, 38)";
+          outline_thickness = 5;
+          placeholder_text = "Password...";
+          shadow_passes = 2;
+        }
+      ];
     };
   };
 }

@@ -18,9 +18,12 @@
       ":q" = "exit";
       ls = "exa -lih";
 
+      cat = "bat";
       diff = "batdiff";
       grep = "batgrep";
       rg = "batgrep";
+
+      "devenv init" = "nix flake init --template github:cachix/devenv#flake-parts";
     };
 
     history.size = 10000;

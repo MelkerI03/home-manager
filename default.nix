@@ -13,15 +13,9 @@
     ./ssh/config.nix
     ./git/config.nix
     ./nh/config.nix
+
+    ./vscode/config.nix
   ];
-
-  home.username = "viking";
-  home.homeDirectory = "/home/viking";
-  home.stateVersion = "25.05";
-
-  xdg.userDirs.enable = true;
-
-  services.blueman-applet.enable = true;
 
   #----=[ Packages ]=----#
   home.packages = with pkgs; [
@@ -103,74 +97,7 @@
     wayclip
     bc
     eva
-
-    # CTF tools
-    burpsuite
-    ghidra
-    wordlists
-    wine
-    gobuster
-    hydra
-    nikto
-    wireshark-qt
-    sqlmap
-    payloadsallthethings
-    ffuf
-    fuzzdb
-    cyberchef
-    hashcat
-    enum4linux-ng
-    smbclient-ng
-    smbmap
-    smbscan
-    dig
-    steghide
-    stegseek
-    stegsolve
-    binwalk
-    exiftool
-    ltrace
-    foremost
-    zsteg
-    nmap
-    tcpflow
-    tcpdump
-    whois
-    ipcalc
-    checksec
-    ropgadget
-    ropr
-    gdb
-    apktool
-
-    # Create an FHS environment using the command `fhs`, enabling the execution of non-NixOS packages in NixOS!
-    (
-      let
-        base = pkgs.appimageTools.defaultFhsEnvArgs;
-      in
-      pkgs.buildFHSEnv (
-        base
-        // {
-          name = "fhs";
-          targetPkgs =
-            pkgs:
-            # pkgs.buildFHSEnv provides only a minimal FHS environment,
-            # lacking many basic packages needed by most software.
-            # Therefore, we need to add them manually.
-            #
-            # pkgs.appimageTools provides basic packages required by most software.
-            (base.targetPkgs pkgs)
-            ++ (with pkgs; [
-              pkg-config
-              ncurses
-              # Feel free to add more packages here if needed.
-            ]);
-          profile = "export FHS=1";
-          runScript = "bash";
-          extraOutputsToInstall = [ "dev" ];
-        }
-      )
-    )
+    fastfetch
 
     # Productivity
     libreoffice
@@ -181,8 +108,10 @@
     lutris
     spotify
     vesktop
+    signal-desktop
 
     # TEMPORARY PACKAGES
+    vlc
   ];
 
   fonts = {
@@ -197,7 +126,4 @@
       };
     };
   };
-
-  # Enable Home-Manager
-  programs.home-manager.enable = true;
 }

@@ -34,7 +34,7 @@
       bind k select-pane -U
       bind l select-pane -R
 
-      bind -n M-h resize-pane -L 10
+      bind -n M-h resize-pane -L 2
       bind -n M-j resize-pane -D 2
       bind -n M-k resize-pane -U 2
       bind -n M-l resize-pane -R 2
