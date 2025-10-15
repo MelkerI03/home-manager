@@ -33,19 +33,26 @@
           };
           modules = [
             ./modules/home-base.nix
+            ./modules/direnv.nix
+            ./modules/fonts.nix
+            ./modules/nh.nix
+
             ./modules/hyprland/hyprland.nix
             ./modules/nixvim/nixvim.nix
-            ./modules/nh.nix
+            ./modules/vscode.nix
+            ./modules/kitty.nix
+            ./modules/rofi.nix
+            ./modules/tmux.nix
             ./modules/cli.nix
             ./modules/git.nix
             ./modules/ssh.nix
             ./modules/zsh.nix
-            ./modules/rofi.nix
-            ./modules/tmux.nix
-            ./modules/kitty.nix
-            ./modules/direnv.nix
-            ./modules/vscode.nix
-            ./default.nix
+
+            ./modules/packages/productivity.nix
+            ./modules/packages/development.nix
+            ./modules/packages/misc.nix
+            ./modules/packages/QoL.nix
+
             nixvim.homeModules.nixvim
             nixploit.homeModules.nixploit
           ];
