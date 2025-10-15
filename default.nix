@@ -1,21 +1,6 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./nixvim/config.nix
-    ./direnv/config.nix
-    ./kitty/config.nix
-    ./tmux/config.nix
-    ./rofi/config.nix
-    ./zsh/config.nix
-    ./cli/config.nix
-    ./ssh/config.nix
-    ./git/config.nix
-    ./nh/config.nix
-
-    ./vscode/config.nix
-  ];
-
   #----=[ Packages ]=----#
   home.packages = with pkgs; [
     # Fonts

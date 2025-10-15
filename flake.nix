@@ -34,9 +34,20 @@
           modules = [
             ./modules/home-base.nix
             ./modules/hyprland/hyprland.nix
+            ./modules/nixvim/nixvim.nix
+            ./modules/nh.nix
+            ./modules/cli.nix
+            ./modules/git.nix
+            ./modules/ssh.nix
+            ./modules/zsh.nix
+            ./modules/rofi.nix
+            ./modules/tmux.nix
+            ./modules/kitty.nix
+            ./modules/direnv.nix
+            ./modules/vscode.nix
             ./default.nix
             nixvim.homeModules.nixvim
-            nixploit.homeManagerModules.nixploit
+            nixploit.homeModules.nixploit
           ];
         };
       };
