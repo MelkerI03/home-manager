@@ -8,6 +8,7 @@
 
     shellAliases = {
       update = "nh os switch /home/viking/.config/nixos/";
+      test = "nh os test /home/viking/.config/nixos/";
       home = "nh home switch /home/viking/.config/home-manager/";
 
       vi = "nvim";

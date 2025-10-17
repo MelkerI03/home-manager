@@ -17,5 +17,6 @@
     bc
     eva
     fastfetch
+    pipes-rs
   ];
 }

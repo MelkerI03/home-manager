@@ -4,5 +4,7 @@
     libreoffice
     gimp
     vlc
+
+    cheese
   ];
 }

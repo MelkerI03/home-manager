@@ -7,6 +7,7 @@ in
   imports = [
     ./hyprpaper.nix
     ./hyprlock.nix
+    ./redshift.nix
     ./waybar.nix
   ];
 
@@ -36,6 +37,7 @@ in
         "T_QPA_PLATFORMTHEME, qt6ct"
         "XCURSOR_THEME, Adwaita"
         "TK_THEME, Adwaita-dark"
+        "AQ_DRM_DEVICES, /dev/dri/card1" # Disable nvidia for hyprland
       ];
 
       exec-once = [
@@ -62,7 +64,7 @@ in
       };
 
       monitor = [
-        "eDP-1, 1920x1200@60, 0x0, 1"
+        "eDP-1, 2880x1800@60, 0x0, 1.5"
       ];
 
       bind = [
@@ -71,6 +73,7 @@ in
 
         "${mod}, F, fullscreen"
         "${mod}, P, exec, hyprpicker -a"
+        "${mod}, SPACE, togglefloating"
         "SUPER, SUPER_L, exec, pkill rofi || rofi -show drun"
 
         "${mod}, Q, killactive"
@@ -130,12 +133,14 @@ in
         ", switch:on:Lid Switch, exec, systemctl hibernate"
       ];
 
+      bindm = [
+        "${mod}, mouse:272, movewindow"
+        "${mod}, mouse:273, resizewindow"
+      ];
+
       decoration = {
         rounding = 8;
       };
-
-      # windowrulev2 = workspace 2,class:(songrec),title:()
-      windowrulev2 = "workspace 2,class:(firefox),title:()";
 
       # Disable gaps when only one window
       workspace = [

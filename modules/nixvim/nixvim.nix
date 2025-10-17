@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs.nixvim = {
     enable = true;
@@ -9,22 +9,24 @@
       ./opts.nix
     ];
 
+    colorscheme = "monokai-pro";
     colorschemes.monokai-pro.enable = true;
 
     plugins = {
       web-devicons.enable = true; # Nerd Font additions
       nvim-autopairs.enable = true; # Autopairing
-      tmux-navigator.enable = true;
-      telescope.enable = true;
-      treesitter.enable = true;
-      oil.enable = true;
-      lualine.enable = true;
-      which-key.enable = true;
-      bufferline.enable = true;
-      lsp-lines.enable = true;
+      tmux-navigator.enable = true; # Nice tmux bind integration
+      telescope.enable = true; # Fuzzyfinder
+      treesitter.enable = true; # Basic linting
+      oil.enable = true; # File manager
+      lualine.enable = true; # Bottom status line
+      which-key.enable = true; # Displays which keys are mapped
+      bufferline.enable = true; # Displays open buffers
+      lsp-lines.enable = true; # Inline LSP diagnostics
+      comment.enable = true; # Smart comments
+      sleuth.enable = true; # Smart shiftwidth
 
-      wtf.enable = true; # AI-driven dignostics debugging
-
+      # Suggestions & more
       cmp = {
         enable = true;
         autoEnableSources = true;
@@ -45,28 +47,6 @@
       luasnip.enable = true;
     };
 
-    extraPlugins = with pkgs.vimPlugins; [
-      vim-sleuth
-      comment-nvim
-      nvim-autopairs
-      leetcode-nvim
-    ];
-
     clipboard.register = "unnamedplus";
-
-    extraConfigLua = ''
-      require("leetcode").setup({
-        lang = "python",
-      })
-
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        callback = function(args)
-        require("conform").format({
-          bufnr = args.buf,
-          lsp_fallback = true,
-        })
-        end,
-      })
-    '';
   };
 }
