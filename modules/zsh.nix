@@ -7,9 +7,26 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      update = "nh os switch /home/viking/.config/nixos/";
-      test = "nh os test /home/viking/.config/nixos/";
+      update = "nh os switch";
+      test = "nh os test";
       home = "nh home switch /home/viking/.config/home-manager/";
+
+      gs = "git status --short";
+      gd = "git diff";
+
+      ga = "git add";
+      gap = "git add --patch";
+      gc = "git commit";
+
+      gp = "git push";
+      gu = "git pull";
+
+      gl = "git log";
+      gb = "git branch";
+      gw = "git switch";
+
+      gi = "git init";
+      gcl = "git clone";
 
       vi = "nvim";
       vim = "nvim";
@@ -20,7 +37,6 @@
       ls = "exa -lih";
 
       cat = "bat";
-      diff = "batdiff";
       grep = "batgrep";
       rg = "batgrep";
 
