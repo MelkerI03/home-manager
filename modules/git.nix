@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.git = {
     enable = true;
@@ -48,10 +48,36 @@
         showUntrackedFiles = "all";
       };
 
-      credential.helper = "oauth";
-      push.autoSetupRemote = true;
+      commit = {
+        verbose = true;
+        template = "${config.xdg.configHome}/git/commit-template.txt";
+      };
 
-      pull.rebase = true;
+      credential.helper = "oauth";
+      push = {
+        default = "current";
+        autoSetupRemote = true;
+
+        followTags = true;
+      };
+
+      pull = {
+        default = "current";
+        rebase = true;
+      };
+
+      rebase = {
+        autoStash = true;
+        missingCommitsCheck = "warn";
+      };
+
+      branch = {
+        sort = "-committerdate";
+      };
+
+      tag = {
+        sort = "-taggerdate";
+      };
     };
 
     delta = {
@@ -62,6 +88,31 @@
       };
     };
   };
+  home.file.".config/git/commit-template.txt".text = ''
+    # ✅ CATEGORIES (pick one per commit):
+    #
+    # ✨ feat: 
+    # 🐛 fix: 
+    # 🧹 refactor: 
+    # 🧪 test: 
+    # 🧩 chore: 
+    # 🎨 style: 
+    # 📝 docs: 
+    # 🚀 perf: 
+    # 🔒 security: 
+    # 🔧 config: 
+    # ⏪ revert: 
+    #
+    # ────────────────────────────────────────────────
+    #
+    # 💡 STRUCTURE:
+    # <type>: <short summary>
+    #
+    # [blank line]
+    # (optional) <detailed description explaining what and why>
+    #
+    # ────────────────────────────────────────────────
+  '';
   home.packages = with pkgs; [
     git-credential-oauth
   ];
