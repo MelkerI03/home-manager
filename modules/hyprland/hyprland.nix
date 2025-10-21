@@ -78,7 +78,8 @@ in
 
         "${mod}, Q, killactive"
 
-        # "${mod}, L, exec, hyprlock"
+        "${mod}, PRINT, exec, hyprshot -m window -o $XDG_SCREENSHOTS_DIR"
+        ", PRINT, exec, hyprshot -m region -o $XDG_SCREENSHOTS_DIR"
 
         "${mod}, 1, workspace, 1"
         "${mod}, 2, workspace, 2"
@@ -262,5 +263,7 @@ in
     };
   };
 
-  services.network-manager-applet.enable = true;
+  services = {
+    network-manager-applet.enable = true;
+  };
 }
