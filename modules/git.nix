@@ -1,11 +1,24 @@
 { pkgs, config, ... }:
 {
+  home.packages = with pkgs; [
+    git
+    git-credential-manager
+  ];
+
   programs.git = {
     enable = true;
-    userName = "MelkerI03";
-    userEmail = "Melker.Isaksson@outlook.com";
+    settings = {
+      user = {
+        name = "MelkerI03";
+        email = "Melker.Isaksson@outlook.com";
+      };
 
-    extraConfig = {
+      credential = {
+        helper = "manager";
+        "https://github.com".username = "MelkerI03";
+        credentialStore = "cache";
+      };
+
       init = {
         defaultBranch = "master";
       };
@@ -53,7 +66,6 @@
         template = "${config.xdg.configHome}/git/commit-template.txt";
       };
 
-      credential.helper = "oauth";
       push = {
         default = "current";
         autoSetupRemote = true;
@@ -80,14 +92,17 @@
       };
     };
 
-    delta = {
-      enable = true;
-      options = {
-        navigate = true; # use n and N to move between diff sections
-        dark = true;
-      };
-    };
   };
+
+  programs.delta = {
+    enable = true;
+    options = {
+      navigate = true; # use n and N to move between diff sections
+      dark = true;
+    };
+    enableGitIntegration = true;
+  };
+
   home.file.".config/git/commit-template.txt".text = ''
     # ✅ CATEGORIES (pick one per commit):
     #
@@ -113,7 +128,4 @@
     #
     # ────────────────────────────────────────────────
   '';
-  home.packages = with pkgs; [
-    git-credential-oauth
-  ];
 }

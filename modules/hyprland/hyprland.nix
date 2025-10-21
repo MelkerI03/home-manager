@@ -27,6 +27,7 @@ in
     wireplumber
     dunst
     libnotify
+    networkmanagerapplet
   ];
 
   wayland.windowManager.hyprland = {
@@ -41,7 +42,6 @@ in
       ];
 
       exec-once = [
-        "${pkgs.hyprpaper}/bin/hyprpaper"
         "${pkgs.waybar}/bin/waybar"
         "${pkgs.dconf}/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'"
         "${pkgs.dconf}/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
@@ -64,7 +64,7 @@ in
       };
 
       monitor = [
-        "eDP-1, 2880x1800@60, 0x0, 1.5"
+        "eDP-1, 1920x1200@60, 0x0, 1.0"
       ];
 
       bind = [
@@ -74,7 +74,7 @@ in
         "${mod}, F, fullscreen"
         "${mod}, P, exec, hyprpicker -a"
         "${mod}, SPACE, togglefloating"
-        "SUPER, SUPER_L, exec, pkill rofi || rofi -show drun"
+        "SUPER, ${mod}, exec, pkill rofi || rofi -show drun"
 
         "${mod}, Q, killactive"
 
@@ -261,4 +261,6 @@ in
       package = pkgs.adwaita-qt6;
     };
   };
+
+  services.network-manager-applet.enable = true;
 }

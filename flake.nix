@@ -8,6 +8,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     nixploit.url = "github:MelkerI03/nixploit";
+    # ragenix.url = "github:yaxitech/ragenix";
   };
 
   outputs =
@@ -17,6 +18,7 @@
       home-manager,
       nixvim,
       nixploit,
+      # ragenix,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
@@ -32,6 +34,7 @@
             config.allowUnfree = true;
           };
           modules = [
+            # ragenix.homeManagerModules
             ./modules/home-base.nix
             ./modules/direnv.nix
             ./modules/fonts.nix
