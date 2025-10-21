@@ -7,7 +7,7 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      update = "nh os switch";
+      nixos = "nh os switch";
       test = "nh os test";
       home = "nh home switch /home/viking/.config/home-manager/";
 
