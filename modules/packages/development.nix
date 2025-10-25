@@ -28,8 +28,6 @@
     cmake
     ninja
 
-    rustc
-    cargo
     go
     lua
     jq
@@ -44,8 +42,5 @@
     cabal2nix
     hlint
     vale
-    rust-analyzer
-    rustfmt
-    clippy
   ];
 }

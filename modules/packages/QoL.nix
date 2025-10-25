@@ -18,5 +18,6 @@
     eva
     fastfetch
     pipes-rs
+    warpinator
   ];
 }
