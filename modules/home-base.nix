@@ -10,6 +10,24 @@
     XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Pictures/screenshots";
   };
 
+  xdg.mimeApps.defaultApplications = {
+    "text/html" = [
+      "firefox.desktop"
+    ];
+    "x-scheme-handler/http" = [
+      "firefox.desktop"
+    ];
+    "x-scheme-handler/https" = [
+      "firefox.desktop"
+    ];
+    "x-scheme-handler/about" = [
+      "firefox.desktop"
+    ];
+    "x-scheme-handler/unknown" = [
+      "firefox.desktop"
+    ];
+  };
+
   services.blueman-applet.enable = true;
   services.udiskie.enable = true;
 
