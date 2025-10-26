@@ -75,6 +75,7 @@ in
         "${mod}, P, exec, hyprpicker -a"
         "${mod}, SPACE, togglefloating"
         "SUPER, ${mod}, exec, pkill rofi || rofi -show drun"
+        "${mod}, E, exec, thunar"
 
         "${mod}, Q, killactive"
 
