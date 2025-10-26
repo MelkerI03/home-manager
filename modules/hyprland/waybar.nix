@@ -68,7 +68,7 @@
           tooltip-format-disconnected = "Error";
           tooltip-format-wifi = "{essid} ({signalStrength}%) ";
           tooltip-format-ethernet = "{ifname} 🖧 ";
-          on-click = "kitty sudo nmtui";
+          on-click = "nm-connection-editor";
         };
 
         "pulseaudio" = {
@@ -83,6 +83,7 @@
               ""
             ];
           };
+          on-click = "pwvucontrol";
         };
 
         bluetooth = {

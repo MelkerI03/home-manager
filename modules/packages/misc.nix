@@ -7,5 +7,7 @@
     vesktop
     signal-desktop
     popcorntime
+
+    pwvucontrol
   ];
 }
