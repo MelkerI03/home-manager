@@ -4,7 +4,7 @@
     libreoffice
     gimp
     vlc
-
     cheese
+    firefox # Here for debugging purposes
   ];
 }

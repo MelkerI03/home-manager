@@ -12,19 +12,19 @@
 
   xdg.mimeApps.defaultApplications = {
     "text/html" = [
-      "firefox.desktop"
+      "librewolf.desktop"
     ];
     "x-scheme-handler/http" = [
-      "firefox.desktop"
+      "librewolf.desktop"
     ];
     "x-scheme-handler/https" = [
-      "firefox.desktop"
+      "librewolf.desktop"
     ];
     "x-scheme-handler/about" = [
-      "firefox.desktop"
+      "librewolf.desktop"
     ];
     "x-scheme-handler/unknown" = [
-      "firefox.desktop"
+      "librewolf.desktop"
     ];
   };
 

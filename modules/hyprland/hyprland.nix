@@ -49,7 +49,7 @@ in
 
         # Default workspace programs
         "[workspace 1 silent] kitty"
-        "[workspace 2 silent] firefox"
+        "[workspace 2 silent] librewolf"
         "[workspace 3 silent] spotify"
         "[workspace 4 silent] vesktop"
       ];
