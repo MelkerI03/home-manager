@@ -42,5 +42,6 @@
     cabal2nix
     hlint
     vale
+    cargo
   ];
 }
