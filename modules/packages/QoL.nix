@@ -9,6 +9,7 @@
     tealdeer
     fd
     feh
+    pix
     wev
     xfce.thunar
     btop

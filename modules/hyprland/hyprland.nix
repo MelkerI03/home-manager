@@ -19,6 +19,7 @@ in
     gnome-themes-extra
     papirus-icon-theme
     adwaita-qt6
+    xdg-desktop-portal
     xdg-desktop-portal-gtk
     qt6ct
 
