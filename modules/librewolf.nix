@@ -21,7 +21,7 @@
       "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
 
       # Clicked links open in suitable tab
-      "browser.link.open_newwindow" = 1;
+      "browser.link.open_newwindow" = 3;
       "browser.link.open_newwindow.restriction" = 2;
     };
   };
