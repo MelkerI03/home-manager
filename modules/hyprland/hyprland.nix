@@ -132,10 +132,6 @@ in
         ", XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
       ];
 
-      bindl = [
-        ", switch:on:Lid Switch, exec, systemctl hibernate"
-      ];
-
       bindm = [
         "${mod}, mouse:272, movewindow"
         "${mod}, mouse:273, resizewindow"
