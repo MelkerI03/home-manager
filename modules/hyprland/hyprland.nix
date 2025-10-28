@@ -23,8 +23,6 @@ in
     xdg-desktop-portal-gtk
     qt6ct
 
-    playerctl
-    brightnessctl
     wireplumber
     dunst
     libnotify
@@ -45,6 +43,7 @@ in
 
       exec-once = [
         "${pkgs.waybar}/bin/waybar"
+        "${pkgs.swayosd}/bin/swayosd-client"
         "${pkgs.dconf}/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'"
         "${pkgs.dconf}/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
 
@@ -118,19 +117,19 @@ in
         "${mod} SHIFT, 9, moveToWorkspace, 9"
 
         # Multimedia keybindings
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_SINK@ toggle"
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioNext, exec, playerctl next"
-        ", XF86AudioPrev, exec, playerctl previous"
+        ", XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
+        ", XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
+        ", XF86AudioPlay, exec, swayosd-client --playerctl play-pause"
+        ", XF86AudioNext, exec, swayosd-client --playerctl next"
+        ", XF86AudioPrev, exec, swayosd-client --playerctl prev"
       ];
 
       binde = [
+        ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower --max-volume 150"
+        ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise --max-volume 150"
 
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_SINK@ 5%+ --limit 1.5"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_SINK@ 5%-"
-
-        ", XF86MonBrightnessDown, exec, brightnessctl s 10%-"
-        ", XF86MonBrightnessUp, exec, brightnessctl s +10%"
+        ", XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
+        ", XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
       ];
 
       bindl = [
@@ -267,6 +266,6 @@ in
   };
 
   services = {
-    network-manager-applet.enable = true;
+    swayosd.enable = true;
   };
 }

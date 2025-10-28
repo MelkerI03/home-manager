@@ -14,10 +14,10 @@
         modules-left = [
           "custom/notification"
           "clock"
-          "pulseaudio"
         ];
         modules-center = [ "hyprland/workspaces" ];
         modules-right = [
+          "pulseaudio"
           "bluetooth"
           "network"
           "power-profiles-daemon"
@@ -72,10 +72,10 @@
         };
 
         "pulseaudio" = {
-          format = "{icon} {volume}%";
+          format = "{icon}";
           tooltip-format = "{desc} ({volume}%)";
           tooltip = true;
-          format-muted = " Muted";
+          format-muted = "";
           format-icons = {
             default = [
               ""
@@ -185,27 +185,15 @@
         color: @color7;
       }
 
-      #clock:hover, #custom-pacman:hover, #custom-notification:hover,#bluetooth:hover,#network:hover,#battery:hover, #cpu:hover,#memory:hover,#temperature:hover{
+      #clock:hover, #custom-notification:hover,#bluetooth:hover,#network:hover,#battery:hover, #cpu:hover,#memory:hover,#temperature:hover, #pulseaudio:hover, #power-profiles-daemon:hover{
         transition: all .3s ease;
         color:@color9;
       }
 
-      #custom-notification {
-        padding: 0px 5px;
-        transition: all .3s ease;
-        color:@color7;
-      }
-
-      #clock{
+      #pulseaudio, #power-profiles-daemon, #custom-notification, #clock, #bluetooth, #network, #battery {
         padding: 0px 5px;
         color:@color7;
         transition: all .3s ease;
-      }
-
-      #custom-pacman{
-        padding: 0px 5px;
-        transition: all .3s ease;
-        color:@color7;
       }
 
       #workspaces {
@@ -249,24 +237,6 @@
         color: @color9;
         border: none;
         text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
-      }
-
-      #bluetooth{
-        padding: 0px 5px;
-        transition: all .3s ease;
-        color:@color7;
-      }
-
-      #network{
-        padding: 0px 5px;
-        transition: all .3s ease;
-        color:@color7;
-      }
-
-      #battery{
-        padding: 0px 5px;
-        transition: all .3s ease;
-        color:@color7;
       }
 
       #battery.charging {
