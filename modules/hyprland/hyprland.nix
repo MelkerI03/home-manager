@@ -73,7 +73,7 @@ in
         "${mod}, M, exit"
 
         "${mod}, F, fullscreen"
-        "${mod}, P, exec, hyprpicker -a"
+        "${mod}, P, exec, pkill hyprpicker || hyprpicker -a"
         "${mod}, SPACE, togglefloating"
         "SUPER, ${mod}, exec, pkill rofi || rofi -show drun"
         "${mod}, E, exec, thunar"
