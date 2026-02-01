@@ -9,9 +9,10 @@
     proggyfonts
     liberation_ttf
     adwaita-icon-theme
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     noto-fonts-cjk-sans
     font-awesome
+    corefonts
   ];
 
   fonts = {
