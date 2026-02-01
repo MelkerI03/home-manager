@@ -14,8 +14,8 @@
 
       rust_analyzer = {
         enable = true;
-        installRustc = true;
-        installCargo = true;
+        installCargo = false;
+        installRustc = false;
 
         settings = {
           check = {
@@ -40,7 +40,10 @@
         lua = [ "stylua" ];
         python = [ "black" ];
         javascript = [ "prettier" ];
-        nix = [ "nixfmt" ];
+        nix = [
+          "alejandra"
+          # "nixfmt"
+        ];
         c = [ "clang-format" ];
         haskell = [ "stylish-haskell" ];
         rust = [ "rustfmt" ];

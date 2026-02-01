@@ -42,6 +42,9 @@
     cabal2nix
     hlint
     vale
-    cargo
+
+    conda
+    ollama
+    nodejs
   ];
 }

@@ -45,6 +45,7 @@
       };
 
       luasnip.enable = true;
+      markdown-preview.enable = true;
     };
 
     clipboard.register = "unnamedplus";
