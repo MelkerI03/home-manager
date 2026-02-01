@@ -36,10 +36,6 @@
       ":q" = "exit";
       ls = "exa -lih";
 
-      cat = "bat";
-      grep = "batgrep";
-      rg = "batgrep";
-
       "devenv init" = "nix flake init --template github:cachix/devenv#flake-parts";
     };
 

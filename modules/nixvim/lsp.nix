@@ -4,6 +4,7 @@
     enable = true;
     servers = {
       nixd.enable = true;
+      vtsls.enable = true;
       basedpyright = {
         enable = true;
         settings.basedpyright.analysis = {

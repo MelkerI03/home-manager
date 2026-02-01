@@ -43,9 +43,11 @@
             ./modules/hyprland/hyprland.nix
             ./modules/nixvim/nixvim.nix
             ./modules/librewolf.nix
+            ./modules/syncthing.nix
             ./modules/vscode.nix
+            ./modules/fuzzel.nix
             ./modules/kitty.nix
-            ./modules/rofi.nix
+            ./modules/nemo.nix
             ./modules/tmux.nix
             ./modules/cli.nix
             ./modules/git.nix

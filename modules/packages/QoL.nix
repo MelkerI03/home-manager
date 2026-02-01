@@ -7,11 +7,11 @@
     ripgrep
     btop
     tealdeer
+    thunar
+    nemo
     fd
-    feh
     pix
     wev
-    xfce.thunar
     btop
     blueman
     pywal

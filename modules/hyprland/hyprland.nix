@@ -21,12 +21,15 @@ in
     adwaita-qt6
     xdg-desktop-portal
     xdg-desktop-portal-gtk
-    qt6ct
+    qt6Packages.qt6ct
 
     wireplumber
     dunst
     libnotify
     networkmanagerapplet
+
+    # Testing
+    fuzzel
   ];
 
   wayland.windowManager.hyprland = {
@@ -75,8 +78,10 @@ in
         "${mod}, F, fullscreen"
         "${mod}, P, exec, pkill hyprpicker || hyprpicker -a"
         "${mod}, SPACE, togglefloating"
-        "SUPER, ${mod}, exec, pkill rofi || rofi -show drun"
+        "SUPER, ${mod}, exec, pkill fuzzel || fuzzel"
         "${mod}, E, exec, thunar"
+
+        "${mod}, S, togglespecialworkspace"
 
         "${mod}, Q, killactive"
 
@@ -139,6 +144,16 @@ in
 
       decoration = {
         rounding = 8;
+
+        blur = {
+          enabled = true;
+          size = 6;
+          passes = 3;
+          noise = 0.02;
+          contrast = 1.1;
+          brightness = 1.0;
+          popups = true;
+        };
       };
 
       # Disable gaps when only one window
@@ -147,11 +162,18 @@ in
         "f[1], gapsout:0, gapsin:0"
       ];
 
-      windowrule = [
+      windowrulev2 = [
         "bordersize 0, floating:0, onworkspace:w[tv1]"
         "rounding 0, floating:0, onworkspace:w[tv1]"
         "bordersize 0, floating:0, onworkspace:f[1]"
         "rounding 0, floating:0, onworkspace:f[1]"
+
+        "workspace 3, class:^spotify$"
+        "workspace 4, class:^vesktop$"
+
+        # Blurring on terminal
+        "noblur, class:^(?!${term}).*$"
+        "opacity 0.87 0.87, class:^(${term})$"
       ];
 
       general = {
@@ -159,7 +181,7 @@ in
       };
 
       animations = {
-        enabled = true;
+        enabled = false; # Temp
         bezier = [
           "fastBezier, 0.1, 0.8, 0.2, 1.0"
         ];
@@ -171,6 +193,10 @@ in
           "workspaces, 1, 3, fastBezier"
         ];
       };
+
+      misc = [
+        "vfr = true"
+      ];
     };
   };
 
