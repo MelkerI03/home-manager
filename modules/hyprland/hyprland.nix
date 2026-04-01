@@ -69,6 +69,7 @@ in
 
       monitor = [
         "eDP-1, 1920x1200@60, 0x0, 1.0, bitdepth, 10"
+        "DP-1, 3840x2160@100, 0x0, 1.5, bitdepth, 10"
 
         # "DP-7, 2560x1440@60, auto, 1"
         "DP-7, 1920x1080@60, auto, 1"
@@ -84,6 +85,7 @@ in
         "${mod}, SPACE, togglefloating"
         "SUPER, ${mod}, exec, pkill fuzzel || fuzzel"
         "${mod}, E, exec, thunar"
+        "${mod} SHIFT, P, exec, hyprlock"
 
         "${mod}, S, togglespecialworkspace"
 
@@ -173,7 +175,6 @@ in
         "rounding 0, floating:0, onworkspace:f[1]"
 
         "workspace 3, class:^spotify$"
-        "workspace 4, class:^vesktop$"
 
         # Blurring on terminal
         "noblur, class:^(?!${term}).*$"
@@ -198,9 +199,9 @@ in
         ];
       };
 
-      misc = [
-        "vfr = true"
-      ];
+      # misc = [
+      #   "vfr = true"
+      # ];
     };
   };
 

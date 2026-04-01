@@ -31,11 +31,11 @@
       "application/x-extension-xhtml" = [ "librewolf.desktop" ];
       "application/x-extension-xht" = [ "librewolf.desktop" ];
 
-      "images/png" = [ "pix.desktop" ];
-      "images/jpg" = [ "pix.desktop" ];
-      "images/webp" = [ "pix.desktop" ];
-      "images/svg+xml" = [ "pix.desktop" ];
-      "images/jpeg" = [ "pix.desktop" ];
+      "image/png" = [ "pix.desktop" ];
+      "image/jpg" = [ "pix.desktop" ];
+      "image/webp" = [ "pix.desktop" ];
+      "image/svg+xml" = [ "pix.desktop" ];
+      "image/jpeg" = [ "pix.desktop" ];
     };
   };
 

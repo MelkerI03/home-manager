@@ -1,4 +1,8 @@
-{ ... }:
+{ config, ... }:
+let
+  homeManagerDir = "${config.home.homeDirectory}/.config/home-manager";
+  wallpaper = "${homeManagerDir}/wallpapers/dark_alley.jpg";
+in
 {
   programs.hyprlock = {
     enable = true;
@@ -13,7 +17,7 @@
 
       background = [
         {
-          path = "/home/viking/Pictures/Wallpapers/redmountain.png";
+          path = "${wallpaper}";
           blur_passes = 2;
           blur_size = 8;
         }
