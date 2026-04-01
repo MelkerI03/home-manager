@@ -23,6 +23,19 @@
         defaultBranch = "master";
       };
 
+      merge = {
+        tool = "nvimdiff";
+      };
+
+      mergetool.nvimdiff = {
+        layout = "LOCAL,REMOTE / MERGED";
+      };
+
+      mergetool = {
+        keepBackup = false;
+        prompt = false;
+      };
+
       core = {
         compression = 9;
         whitespace = "error";
