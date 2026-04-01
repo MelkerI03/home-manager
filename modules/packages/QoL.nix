@@ -7,7 +7,6 @@
     ripgrep
     btop
     tealdeer
-    thunar
     nemo
     fd
     pix

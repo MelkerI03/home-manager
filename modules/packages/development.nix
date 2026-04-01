@@ -9,6 +9,7 @@
         dbus-python
         matplotlib
         scipy
+        poetry
       ]
     ))
 
@@ -27,6 +28,7 @@
     gcc
     cmake
     ninja
+    uv
 
     go
     lua
@@ -46,5 +48,18 @@
     conda
     ollama
     nodejs
+
+    tree-sitter
+    sqlite
+    texlivePackages.synctex
+    # texliveFull
+    # texlivePackages.collection-latexextra
+    # (pkgs.texlive.combine {
+    #   inherit (pkgs.texlive)
+    #     scheme-full
+    #     # collection-latexextra
+    #     # moreverb
+    #     ;
+    # })
   ];
 }

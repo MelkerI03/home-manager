@@ -3,12 +3,26 @@
   plugins.lsp = {
     enable = true;
     servers = {
+      html.enable = true;
+      cssls.enable = true;
       nixd.enable = true;
       vtsls.enable = true;
+      tombi.enable = true;
+      # ltex.enable = true;
+      # ltex.settings = {
+      #   language = "sv";
+      # };
+      # texlab.enable = true;
       basedpyright = {
         enable = true;
-        settings.basedpyright.analysis = {
-          typeCheckingMode = "standard";
+        settings = {
+          basedpyright.analysis = {
+            typeCheckingMode = "standard";
+          };
+          python = {
+            venvPath = ".";
+            venv = ".venv";
+          };
         };
       };
 
