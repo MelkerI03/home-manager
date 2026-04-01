@@ -15,21 +15,21 @@
     mime.enable = true;
     mimeApps.enable = true;
     mimeApps.defaultApplications = {
-      "text/html" = [ "librewolf.desktop" ];
+      "text/html" = [ "firefox.desktop" ];
 
       "x-scheme-handler/discord" = [ "vesktop.desktop" ];
-      "x-scheme-handler/http" = [ "librewolf.desktop" ];
-      "x-scheme-handler/https" = [ "librewolf.desktop" ];
-      "x-scheme-handler/about" = [ "librewolf.desktop" ];
-      "x-scheme-handler/unknown" = [ "librewolf.desktop" ];
+      "x-scheme-handler/http" = [ "firefox.desktop" ];
+      "x-scheme-handler/https" = [ "firefox.desktop" ];
+      "x-scheme-handler/about" = [ "firefox.desktop" ];
+      "x-scheme-handler/unknown" = [ "firefox.desktop" ];
 
       "application/pdf" = [ "firefox.desktop" ];
-      "application/x-extension-htm" = [ "librewolf.desktop" ];
-      "application/x-extension-html" = [ "librewolf.desktop" ];
-      "application/x-extension-shtml" = [ "librewolf.desktop" ];
-      "application/xhtml+xml" = [ "librewolf.desktop" ];
-      "application/x-extension-xhtml" = [ "librewolf.desktop" ];
-      "application/x-extension-xht" = [ "librewolf.desktop" ];
+      "application/x-extension-htm" = [ "firefox.desktop" ];
+      "application/x-extension-html" = [ "firefox.desktop" ];
+      "application/x-extension-shtml" = [ "firefox.desktop" ];
+      "application/xhtml+xml" = [ "firefox.desktop" ];
+      "application/x-extension-xhtml" = [ "firefox.desktop" ];
+      "application/x-extension-xht" = [ "firefox.desktop" ];
 
       "image/png" = [ "pix.desktop" ];
       "image/jpg" = [ "pix.desktop" ];
