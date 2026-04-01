@@ -49,12 +49,12 @@ in
         "${pkgs.swayosd}/bin/swayosd-client"
         "${pkgs.dconf}/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'"
         "${pkgs.dconf}/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
+        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
         # Default workspace programs
         "[workspace 1 silent] kitty"
-        "[workspace 2 silent] librewolf"
+        "[workspace 2 silent] firefox"
         "[workspace 3 silent] spotify"
-        "[workspace 4 silent] vesktop"
       ];
 
       input = {

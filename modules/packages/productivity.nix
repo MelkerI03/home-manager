@@ -1,13 +1,14 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    pulseaudioFull
     libreoffice
     gimp
     pinta
     vlc
     cheese
     firefox # Here for debugging purposes
-    tailscale
-    kicad
+    zoom-us
+    polkit_gnome
   ];
 }

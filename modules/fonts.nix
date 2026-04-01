@@ -13,6 +13,7 @@
     noto-fonts-cjk-sans
     font-awesome
     corefonts
+    work-sans
   ];
 
   fonts = {
