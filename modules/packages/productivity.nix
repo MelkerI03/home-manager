@@ -10,5 +10,6 @@
     firefox # Here for debugging purposes
     zoom-us
     polkit_gnome
+    tailscale
   ];
 }

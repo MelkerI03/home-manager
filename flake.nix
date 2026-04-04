@@ -2,13 +2,16 @@
   description = "Home-Manager Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
     nixvim.url = "github:nix-community/nixvim";
     flake-parts.url = "github:hercules-ci/flake-parts";
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixploit.url = "github:MelkerI03/nixploit";
     # ragenix.url = "github:yaxitech/ragenix";
@@ -21,14 +24,12 @@
       home-manager,
       nixvim,
       nixploit,
+      nix-index-database,
       # ragenix,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
-
-      imports = [
-      ];
 
       flake.homeConfigurations = {
         viking = home-manager.lib.homeManagerConfiguration {
@@ -45,8 +46,9 @@
 
             ./modules/hyprland/hyprland.nix
             ./modules/nixvim/nixvim.nix
-            # ./modules/qbittorrent.nix
+            ./modules/nix-index.nix
             ./modules/librewolf.nix
+            ./modules/syncthing.nix
             ./modules/zathura.nix
             ./modules/vscode.nix
             ./modules/fuzzel.nix
@@ -64,6 +66,7 @@
             ./modules/packages/QoL.nix
 
             nixvim.homeModules.nixvim
+            nix-index-database.homeModules.default
             nixploit.homeModules.nixploit
           ];
         };

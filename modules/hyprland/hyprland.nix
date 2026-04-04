@@ -9,6 +9,8 @@ in
     ./hyprlock.nix
     ./redshift.nix # hyprsunset
     ./waybar.nix
+
+    # ./ulauncher.nix
   ];
 
   home.packages = with pkgs; [
@@ -49,12 +51,12 @@ in
         "${pkgs.swayosd}/bin/swayosd-client"
         "${pkgs.dconf}/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'"
         "${pkgs.dconf}/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
-        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
         # Default workspace programs
         "[workspace 1 silent] kitty"
         "[workspace 2 silent] firefox"
         "[workspace 3 silent] spotify"
+        "[workspace 4 silent] vesktop"
       ];
 
       input = {
@@ -84,6 +86,7 @@ in
         "${mod}, P, exec, pkill hyprpicker || hyprpicker -a"
         "${mod}, SPACE, togglefloating"
         "SUPER, ${mod}, exec, pkill fuzzel || fuzzel"
+        # "SUPER, ${mod}, exec, pkill ulauncher-toggle || ulauncher-toggle"
         "${mod}, E, exec, thunar"
         "${mod} SHIFT, P, exec, hyprlock"
 
@@ -91,8 +94,8 @@ in
 
         "${mod}, Q, killactive"
 
-        "${mod}, PRINT, exec, hyprshot -m window --freeze -o $XDG_SCREENSHOTS_DIR"
-        ", PRINT, exec, hyprshot -m region --freeze -o $XDG_SCREENSHOTS_DIR"
+        "${mod}, PRINT, exec, hyprshot -m window --freeze -o $SCREENSHOTS"
+        ", PRINT, exec, hyprshot -m region --freeze -o $SCREENSHOTS"
 
         "${mod}, 1, workspace, 1"
         "${mod}, 2, workspace, 2"
@@ -168,21 +171,42 @@ in
         "f[1], gapsout:0, gapsin:0"
       ];
 
-      windowrulev2 = [
-        "bordersize 0, floating:0, onworkspace:w[tv1]"
-        "rounding 0, floating:0, onworkspace:w[tv1]"
-        "bordersize 0, floating:0, onworkspace:f[1]"
-        "rounding 0, floating:0, onworkspace:f[1]"
+      windowrule = [
+        # "bordersize 0, floating:0, onworkspace:w[tv1]"
+        # "rounding 0, floating:0, onworkspace:w[tv1]"
+        # "bordersize 0, floating:0, onworkspace:f[1]"
+        # "rounding 0, floating:0, onworkspace:f[1]"
+        #
+        # "workspace 3, class:^spotify$"
+        # "workspace 4, class:^vesktop$"
+        #
+        # # Blurring on terminal
+        # "noblur, class:^(?!${term}).*$"
+        # "opacity 0.87 0.87, class:^(${term})$"
 
-        "workspace 3, class:^spotify$"
+        # "workspace 3, class:^spotify$"
 
         # Blurring on terminal
-        "noblur, class:^(?!${term}).*$"
-        "opacity 0.87 0.87, class:^(${term})$"
+        # "noblur, class:^(?!${term}).*$"
+        # "opacity 0.87 0.87, class:^(${term})$"
+        # Launcher
+        # "noborder, class:^(ulauncher)$"
+        # "group none, class:^(ulauncher)$"
+        # "noborder, class:^(ulauncher)$"
+        # "nogaps, class:^(ulauncher)$"
+        # "noshadow, class:^(ulauncher)$"
+        # "opacity 1.0 1.0, class:^(ulauncher)$"
+        # "bordersize 0, class:^(ulauncher)$"
+        # "noblur, class:^(ulauncher)$"
+        # "nodim, class:^(ulauncher)$"
+        # "sticky, class:^(ulauncher)$"
+        # "rounding 0, class:^(ulauncher)$"
+        # "border_color rgba(00000000), class:^(ulauncher)$"
       ];
 
       general = {
-        gaps_out = 8;
+        # gaps_out = 8;
+        gaps_out = 0;
       };
 
       animations = {
@@ -269,6 +293,7 @@ in
 
   gtk = {
     enable = true;
+    gtk4.theme = null;
     theme = {
       name = "Adwaita-dark";
       package = pkgs.gnome-themes-extra;

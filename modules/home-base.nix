@@ -5,10 +5,13 @@
   home.stateVersion = "25.05";
 
   xdg = {
-    userDirs.enable = true;
-    userDirs.createDirectories = true;
-    userDirs.extraConfig = {
-      XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Pictures/screenshots";
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+      setSessionVariables = true;
+      extraConfig = {
+        SCREENSHOTS = "${config.home.homeDirectory}/Pictures/screenshots";
+      };
     };
 
     configFile."mimeapps.list".force = true;
