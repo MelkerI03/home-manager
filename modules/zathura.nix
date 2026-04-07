@@ -13,7 +13,7 @@
 
       selection-clipboard = "clipboard";
 
-      page-cache-size = 1000;
+      page-cache-size = 50;
       render-all = true;
       incremental-search = true;
     };
