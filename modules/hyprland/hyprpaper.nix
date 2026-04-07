@@ -13,15 +13,11 @@ in
       splash = false;
       ipc = true;
 
-      preload = [
-        wallpaper
-      ];
-
       wallpaper = [
-        # "eDP-1,${wallpaper}"
-        # "DP-7,${wallpaper}"
-        # "DP-8,${wallpaper}"
-        ", ${wallpaper}"
+        {
+          monitor = "";
+          path = "${wallpaper}";
+        }
       ];
     };
   };

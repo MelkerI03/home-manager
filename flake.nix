@@ -2,9 +2,11 @@
   description = "Home-Manager Configuration";
 
   inputs = {
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim.url = "github:nix-community/nixvim";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
@@ -14,7 +16,6 @@
     };
 
     nixploit.url = "github:MelkerI03/nixploit";
-    # ragenix.url = "github:yaxitech/ragenix";
   };
 
   outputs =
@@ -25,7 +26,6 @@
       nixvim,
       nixploit,
       nix-index-database,
-      # ragenix,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
@@ -38,7 +38,6 @@
             config.allowUnfree = true;
           };
           modules = [
-            # ragenix.homeManagerModules
             ./modules/home-base.nix
             ./modules/direnv.nix
             ./modules/fonts.nix
