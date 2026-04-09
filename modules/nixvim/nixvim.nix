@@ -89,6 +89,41 @@
         };
       };
 
+      nui.enable = true;
+      plenary.enable = true;
+
+      chatgpt = {
+        enable = true;
+
+        settings = {
+          api_key_cmd = "cat /home/viking/.config/openai/api_key"; # better than hardcoding
+
+          openai_params = {
+            model = "gpt-4.1-mini"; # cheap + good
+            temperature = 0.2;
+            max_tokens = 1200;
+          };
+
+          popup_layout = {
+            default = "center";
+          };
+
+          popup_window = {
+            border = {
+              style = "rounded";
+              text = {
+                top = " ChatGPT ";
+              };
+            };
+          };
+
+          keymaps = {
+            submit = "<C-Enter>";
+            close = "<Esc>";
+          };
+        };
+      };
+
       luasnip.enable = true; # Snippet provider
       markdown-preview.enable = true; # Markdown compiler
     };

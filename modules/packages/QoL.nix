@@ -19,5 +19,6 @@
     fastfetch
     pipes-rs
     warpinator
+    jellyfin-desktop
   ];
 }
