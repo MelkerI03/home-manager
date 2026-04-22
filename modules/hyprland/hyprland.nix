@@ -6,17 +6,7 @@ let
   ipc = "noctalia-shell ipc call";
 in
 {
-  imports = [
-    ./hyprpaper.nix
-    ./hyprlock.nix
-    ./redshift.nix # hyprsunset
-    ./waybar.nix
-
-    # ./ulauncher.nix
-  ];
-
   home.packages = with pkgs; [
-    hyprpaper
     hyprpicker
     hyprshot
 
@@ -50,7 +40,6 @@ in
 
       exec-once = [
         "noctalia-shell"
-        "${pkgs.swayosd}/bin/swayosd-client"
 
         # Default workspace programs
         "[workspace 1 silent] kitty"
@@ -84,14 +73,9 @@ in
         "${mod}, F, fullscreen"
         "${mod}, P, exec, pkill hyprpicker || hyprpicker -a"
         "${mod}, SPACE, togglefloating"
-        # "SUPER, ${mod}, exec, pkill fuzzel || fuzzel"
-        # "SUPER, ${mod}, exec, pkill ulauncher-toggle || ulauncher-toggle"
-        # "SUPER, ${mod}, exec, pkill rofi || rofi -show drun"
         "SUPER, ${mod}, exec, ${ipc} launcher toggle"
         "${mod}, E, exec, thunar"
-        "${mod} SHIFT, P, exec, hyprlock"
-
-        "${mod}, S, togglespecialworkspace"
+        "${mod} SHIFT, P, exec, ${ipc} lockScreen lock"
 
         "${mod}, Q, killactive"
 
@@ -135,19 +119,19 @@ in
         "${mod}, comma, exec, ${ipc} settings toggle"
 
         # Multimedia keybindings
-        ", XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
-        ", XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
-        ", XF86AudioPlay, exec, swayosd-client --playerctl play-pause"
-        ", XF86AudioNext, exec, swayosd-client --playerctl next"
-        ", XF86AudioPrev, exec, swayosd-client --playerctl prev"
+        ", XF86AudioMicMute, exec, ${ipc} call volume muteInput"
+        ", XF86AudioMute, exec, ${ipc} call volume muteOutput"
+
+        ", XF86AudioPlay, exec, ${ipc} call media playPause"
+        ", XF86AudioNext, exec, ${ipc} call media next"
+        ", XF86AudioPrev, exec, ${ipc} call media previous"
       ];
 
-      binde = [
-        ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower --max-volume 150"
-        ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise --max-volume 150"
-
-        ", XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
-        ", XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
+      bindel = [
+        ", XF86MonBrightnessUp, exec, ${ipc} brightness increase"
+        ", XF86MonBrightnessDown, exec, ${ipc} brightness decrease"
+        ", XF86AudioRaiseVolume, exec, ${ipc} volume increase"
+        ", XF86AudioLowerVolume, exec, ${ipc} volume decrease"
       ];
 
       bindm = [
@@ -204,7 +188,7 @@ in
           name = "terminal blur";
           "match:class" = "^${term}.*$";
           no_blur = false;
-          opacity = "0.93 0.93";
+          opacity = "0.95 0.95";
         }
       ];
 

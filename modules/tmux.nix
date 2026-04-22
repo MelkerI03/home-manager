@@ -8,7 +8,6 @@
       better-mouse-mode
       sensible
       yank
-      catppuccin
       vim-tmux-navigator
       tmux-sessionx
       power-theme
