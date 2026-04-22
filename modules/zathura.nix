@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  catppuccin.zathura.enable = false;
   programs.zathura = {
     enable = true;
 

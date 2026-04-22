@@ -75,7 +75,7 @@
             end
           end
 
-          return { timeout_ms = 200, lsp_fallback = true }, on_format
+          return { timeout_ms = 400, lsp_fallback = true }, on_format
          end
       '';
     };

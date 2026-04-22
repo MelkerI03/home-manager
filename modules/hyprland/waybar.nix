@@ -1,8 +1,14 @@
-{ ... }:
+{ config, ... }:
 
+let
+  inherit (config.catppuccin) sources;
+
+  cfg = config.catppuccin.waybar;
+  styleFile = "${sources.waybar}/${cfg.flavor}.css";
+in
 {
   programs.waybar = {
-    enable = true;
+    enable = false;
 
     settings = {
       mainBar = {
@@ -254,53 +260,6 @@
         animation-timing-function: linear;
         animation-iteration-count: infinite;
         animation-direction: alternate;
-      }
-
-      #group-expand{
-        padding: 0px 5px;
-        transition: all .3s ease; 
-      }
-
-      #custom-expand{
-        padding: 0px 5px;
-        color:alpha(@foreground,.2);
-        text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
-        transition: all .3s ease; 
-      }
-
-      #custom-expand:hover{
-        color:rgba(255,255,255,.2);
-        text-shadow: 0px 0px 2px rgba(255, 255, 255, .5);
-      }
-
-      #custom-colorpicker{
-        padding: 0px 5px;
-      }
-
-      #cpu,#memory,#temperature{
-        padding: 0px 5px;
-        transition: all .3s ease; 
-        color:@color7;
-      }
-
-      #custom-endpoint{
-        color:transparent;
-        text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
-      }
-
-      #tray{
-        padding: 0px 5px;
-        transition: all .3s ease; 
-      }
-
-      #tray menu * {
-        padding: 0px 5px;
-        transition: all .3s ease; 
-      }
-
-      #tray menu separator {
-        padding: 0px 5px;
-        transition: all .3s ease; 
       }
     '';
   };

@@ -16,6 +16,14 @@
     };
 
     nixploit.url = "github:MelkerI03/nixploit";
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -26,6 +34,8 @@
       nixvim,
       nixploit,
       nix-index-database,
+      catppuccin,
+      noctalia,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
@@ -37,6 +47,11 @@
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
+
+          extraSpecialArgs = {
+            inherit (inputs) noctalia;
+          };
+
           modules = [
             ./modules/home-base.nix
             ./modules/direnv.nix
@@ -47,11 +62,13 @@
             ./modules/nixvim/nixvim.nix
             ./modules/nix-index.nix
             ./modules/librewolf.nix
-            ./modules/syncthing.nix
+            # ./modules/syncthing.nix
+            ./modules/noctalia.nix
             ./modules/zathura.nix
             ./modules/vscode.nix
             ./modules/fuzzel.nix
             ./modules/kitty.nix
+            ./modules/rofi.nix
             ./modules/nemo.nix
             ./modules/tmux.nix
             ./modules/cli.nix
@@ -67,6 +84,7 @@
             nixvim.homeModules.nixvim
             nix-index-database.homeModules.default
             nixploit.homeModules.nixploit
+            catppuccin.homeModules.catppuccin
           ];
         };
       };

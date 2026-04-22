@@ -2,6 +2,8 @@
 let
   mod = "SUPER_L";
   term = "kitty";
+
+  ipc = "noctalia-shell ipc call";
 in
 {
   imports = [
@@ -47,16 +49,13 @@ in
       ];
 
       exec-once = [
-        "${pkgs.waybar}/bin/waybar"
+        "noctalia-shell"
         "${pkgs.swayosd}/bin/swayosd-client"
-        "${pkgs.dconf}/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'"
-        "${pkgs.dconf}/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
 
         # Default workspace programs
         "[workspace 1 silent] kitty"
         "[workspace 2 silent] firefox"
         "[workspace 3 silent] spotify"
-        "[workspace 4 silent] vesktop"
       ];
 
       input = {
@@ -85,8 +84,10 @@ in
         "${mod}, F, fullscreen"
         "${mod}, P, exec, pkill hyprpicker || hyprpicker -a"
         "${mod}, SPACE, togglefloating"
-        "SUPER, ${mod}, exec, pkill fuzzel || fuzzel"
+        # "SUPER, ${mod}, exec, pkill fuzzel || fuzzel"
         # "SUPER, ${mod}, exec, pkill ulauncher-toggle || ulauncher-toggle"
+        # "SUPER, ${mod}, exec, pkill rofi || rofi -show drun"
+        "SUPER, ${mod}, exec, ${ipc} launcher toggle"
         "${mod}, E, exec, thunar"
         "${mod} SHIFT, P, exec, hyprlock"
 
@@ -130,6 +131,9 @@ in
         "${mod} SHIFT, 8, moveToWorkspace, 8"
         "${mod} SHIFT, 9, moveToWorkspace, 9"
 
+        "${mod}, S, exec, ${ipc} controlCenter toggle"
+        "${mod}, comma, exec, ${ipc} settings toggle"
+
         # Multimedia keybindings
         ", XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
         ", XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
@@ -152,24 +156,33 @@ in
       ];
 
       decoration = {
-        rounding = 8;
+        rounding = 20;
+        rounding_power = 2;
+
+        shadow = {
+          enabled = true;
+          range = 4;
+          render_power = 3;
+          color = "rgba(1a1a1aee)";
+        };
 
         blur = {
           enabled = true;
-          size = 6;
-          passes = 3;
-          noise = 0.02;
-          contrast = 1.1;
-          brightness = 1.0;
-          popups = true;
+          size = 3;
+          passes = 2;
+          vibrancy = 0.1696;
+          # noise = 0.02;
+          # contrast = 1.1;
+          # brightness = 1.0;
+          # popups = true;
         };
       };
 
       # Disable gaps when only one window
-      workspace = [
-        "w[tv1], gapsout:0, gapsin:0"
-        "f[1], gapsout:0, gapsin:0"
-      ];
+      # workspace = [
+      #   "w[tv1], gapsout:0, gapsin:0"
+      #   "f[1], gapsout:0, gapsin:0"
+      # ];
 
       windowrule = [
         # "bordersize 0, floating:0, onworkspace:w[tv1]"
@@ -187,26 +200,27 @@ in
         # "workspace 3, class:^spotify$"
 
         # Blurring on terminal
-        # "noblur, class:^(?!${term}).*$"
-        # "opacity 0.87 0.87, class:^(${term})$"
-        # Launcher
-        # "noborder, class:^(ulauncher)$"
-        # "group none, class:^(ulauncher)$"
-        # "noborder, class:^(ulauncher)$"
-        # "nogaps, class:^(ulauncher)$"
-        # "noshadow, class:^(ulauncher)$"
-        # "opacity 1.0 1.0, class:^(ulauncher)$"
-        # "bordersize 0, class:^(ulauncher)$"
-        # "noblur, class:^(ulauncher)$"
-        # "nodim, class:^(ulauncher)$"
-        # "sticky, class:^(ulauncher)$"
-        # "rounding 0, class:^(ulauncher)$"
-        # "border_color rgba(00000000), class:^(ulauncher)$"
+        {
+          name = "terminal blur";
+          "match:class" = "^${term}.*$";
+          no_blur = false;
+          opacity = "0.93 0.93";
+        }
+      ];
+
+      layerrule = [
+        {
+          name = "noctalia-shell";
+          "match:namespace" = "noctalia-background-.*$";
+          ignore_alpha = 0.5;
+          blur = true;
+          blur_popups = true;
+        }
       ];
 
       general = {
-        # gaps_out = 8;
-        gaps_out = 0;
+        gaps_in = 5;
+        gaps_out = 10;
       };
 
       animations = {
@@ -229,93 +243,33 @@ in
     };
   };
 
-  xdg.configFile."dunst/dunstrc".text = ''
-    [global]
-    ### Display
-    monitor = 0
-    follow = none
-    width = 300
-    height = (50, 50)
-    origin = bottom-center
-    offset = (0, 50)
-    scale = 0
-    notification_limit = 0
+  # gtk = {
+  #   enable = true;
+  #   gtk4.theme = null;
+  #   theme = {
+  #     name = "Adwaita-dark";
+  #     package = pkgs.gnome-themes-extra;
+  #   };
+  #   iconTheme = {
+  #     name = "Adwaita";
+  #     package = pkgs.adwaita-icon-theme;
+  #   };
+  #   cursorTheme = {
+  #     name = "Adwaita";
+  #     package = pkgs.adwaita-icon-theme;
+  #   };
+  # };
+  #
+  # qt = {
+  #   enable = true;
+  #   platformTheme.name = "adwaita";
+  #   style = {
+  #     name = "Adwaita-dark";
+  #     package = pkgs.adwaita-qt6;
+  #   };
+  # };
 
-    ### Geometry
-    progress_bar = true
-    progress_bar_height = 10
-    progress_bar_frame_width = 1
-    progress_bar_min_width = 150
-    progress_bar_max_width = 150
-
-    ### Text
-    font = Monospace 10
-    line_height = 0
-    format = "%p"  # No text in notification
-    alignment = left
-    vertical_alignment = center
-    show_age_threshold = 60
-    word_wrap = no
-    ignore_newline = no
-    stack_duplicates = false
-    hide_duplicate_count = false
-    show_indicators = no
-
-    ### Icons
-    icon_position = left
-    max_icon_size = 32
-
-    ### Appearance
-    transparency = 10
-    separator_height = 2
-    padding = 8
-    horizontal_padding = 8
-    text_icon_padding = 8
-    frame_width = 2
-    frame_color = "#89B4FA"
-    separator_color = frame
-    corner_radius = 10
-    background = "#1E1E2E"
-    foreground = "#CDD6F4"
-    highlight = "#89B4FA"
-
-    ### Behavior
-    timeout = 3
-
-    [volume]
-    summary = "Volume"
-    appname = "volume"
-    format = "%p"  # Ensure no text
-    set_stack_tag = "volume"
-    urgency = low
-    timeout = 2
-  '';
-
-  gtk = {
-    enable = true;
-    gtk4.theme = null;
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
-    };
-    iconTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
-    };
-    cursorTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
-    };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "adwaita";
-    style = {
-      name = "Adwaita-dark";
-      package = pkgs.adwaita-qt6;
-    };
-  };
+  catppuccin.enable = true;
 
   services = {
     swayosd.enable = true;
