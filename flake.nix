@@ -63,10 +63,7 @@
             ./modules/hyprland.nix
             ./modules/noctalia.nix
             ./modules/zathura.nix
-            ./modules/fuzzel.nix
             ./modules/kitty.nix
-            ./modules/rofi.nix
-            ./modules/nemo.nix
             ./modules/tmux.nix
             ./modules/cli.nix
             ./modules/git.nix

@@ -18,12 +18,6 @@ in
     qt6Packages.qt6ct
 
     wireplumber
-    dunst
-    libnotify
-    networkmanagerapplet
-
-    # Testing
-    fuzzel
   ];
 
   wayland.windowManager.hyprland = {
@@ -161,11 +155,13 @@ in
         };
       };
 
-      # Disable gaps when only one window
-      # workspace = [
-      #   "w[tv1], gapsout:0, gapsin:0"
-      #   "f[1], gapsout:0, gapsin:0"
-      # ];
+      workspace = [
+        "1,, persistent:true"
+        "2,, persistent:true"
+        "3,, persistent:true"
+        "4,, persistent:true"
+        "5,, persistent:true"
+      ];
 
       windowrule = [
         # Blurring on terminal
@@ -213,8 +209,4 @@ in
   };
 
   catppuccin.enable = true;
-
-  services = {
-    swayosd.enable = true;
-  };
 }
