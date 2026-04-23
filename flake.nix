@@ -35,7 +35,6 @@
       nixploit,
       nix-index-database,
       catppuccin,
-      noctalia,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
@@ -55,17 +54,15 @@
           modules = [
             ./modules/home-base.nix
             ./modules/direnv.nix
+            ./modules/nix-index.nix
             ./modules/fonts.nix
             ./modules/nh.nix
 
-            ./modules/hyprland/hyprland.nix
             ./modules/nixvim/nixvim.nix
-            ./modules/nix-index.nix
             ./modules/librewolf.nix
-            # ./modules/syncthing.nix
+            ./modules/hyprland.nix
             ./modules/noctalia.nix
             ./modules/zathura.nix
-            ./modules/vscode.nix
             ./modules/fuzzel.nix
             ./modules/kitty.nix
             ./modules/rofi.nix
