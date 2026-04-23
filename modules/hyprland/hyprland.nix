@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   mod = "SUPER_L";
   term = "kitty";
@@ -119,12 +119,15 @@ in
         "${mod}, comma, exec, ${ipc} settings toggle"
 
         # Multimedia keybindings
-        ", XF86AudioMicMute, exec, ${ipc} call volume muteInput"
-        ", XF86AudioMute, exec, ${ipc} call volume muteOutput"
+        ", XF86AudioMicMute, exec, ${ipc} volume muteInput"
+        ", XF86AudioMute, exec, ${ipc} volume muteOutput"
 
-        ", XF86AudioPlay, exec, ${ipc} call media playPause"
-        ", XF86AudioNext, exec, ${ipc} call media next"
-        ", XF86AudioPrev, exec, ${ipc} call media previous"
+        ", XF86AudioPlay, exec, ${ipc} media playPause"
+        ", XF86AudioNext, exec, ${ipc} media next"
+        ", XF86AudioPrev, exec, ${ipc} media previous"
+
+        ", XF86WLAN, exec, ${ipc} airplaneMode toggle"
+        ", XKB_KEY_XF86NotificationCenter, exec, ${ipc} notifications toggleHistory"
       ];
 
       bindel = [
@@ -140,7 +143,7 @@ in
       ];
 
       decoration = {
-        rounding = 20;
+        rounding = 10;
         rounding_power = 2;
 
         shadow = {
@@ -155,10 +158,6 @@ in
           size = 3;
           passes = 2;
           vibrancy = 0.1696;
-          # noise = 0.02;
-          # contrast = 1.1;
-          # brightness = 1.0;
-          # popups = true;
         };
       };
 
@@ -169,20 +168,6 @@ in
       # ];
 
       windowrule = [
-        # "bordersize 0, floating:0, onworkspace:w[tv1]"
-        # "rounding 0, floating:0, onworkspace:w[tv1]"
-        # "bordersize 0, floating:0, onworkspace:f[1]"
-        # "rounding 0, floating:0, onworkspace:f[1]"
-        #
-        # "workspace 3, class:^spotify$"
-        # "workspace 4, class:^vesktop$"
-        #
-        # # Blurring on terminal
-        # "noblur, class:^(?!${term}).*$"
-        # "opacity 0.87 0.87, class:^(${term})$"
-
-        # "workspace 3, class:^spotify$"
-
         # Blurring on terminal
         {
           name = "terminal blur";
@@ -208,7 +193,7 @@ in
       };
 
       animations = {
-        enabled = false; # Temp
+        enabled = true;
         bezier = [
           "fastBezier, 0.1, 0.8, 0.2, 1.0"
         ];
@@ -220,38 +205,12 @@ in
           "workspaces, 1, 3, fastBezier"
         ];
       };
-
-      # misc = [
-      #   "vfr = true"
-      # ];
     };
-  };
 
-  # gtk = {
-  #   enable = true;
-  #   gtk4.theme = null;
-  #   theme = {
-  #     name = "Adwaita-dark";
-  #     package = pkgs.gnome-themes-extra;
-  #   };
-  #   iconTheme = {
-  #     name = "Adwaita";
-  #     package = pkgs.adwaita-icon-theme;
-  #   };
-  #   cursorTheme = {
-  #     name = "Adwaita";
-  #     package = pkgs.adwaita-icon-theme;
-  #   };
-  # };
-  #
-  # qt = {
-  #   enable = true;
-  #   platformTheme.name = "adwaita";
-  #   style = {
-  #     name = "Adwaita-dark";
-  #     package = pkgs.adwaita-qt6;
-  #   };
-  # };
+    extraConfig = ''
+      source = ${config.xdg.configHome}/hypr/noctalia/noctalia-colors.conf
+    '';
+  };
 
   catppuccin.enable = true;
 

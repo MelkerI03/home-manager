@@ -1,11 +1,13 @@
 { config, ... }:
 let
   homeManagerDir = "${config.home.homeDirectory}/.config/home-manager";
-  # wallpaper = "${homeManagerDir}/wallpapers/dark_alley.jpg";
-  wallpaper = "${homeManagerDir}/wallpapers/norway.png";
-  # wallpaper = "${homeManagerDir}/wallpapers/redmountain.png";
-  # wallpaper = "${homeManagerDir}/wallpapers/ghibli_mountain.jpg";
-  # wallpaper = "${homeManagerDir}/wallpapers/moving_castle.jpg";
+  wallpaperDir = "${homeManagerDir}/images/wallpapers";
+
+  # wallpaper = "${wallpaperDir}/dark_alley.jpg";
+  wallpaper = "${wallpaperDir}/norway.png";
+  # wallpaper = "${wallpaperDir}/redmountain.png";
+  # wallpaper = "${wallpaperDir}/ghibli_mountain.jpg";
+  # wallpaper = "${wallpaperDir}/moving_castle.jpg";
 in
 {
   services.hyprpaper = {
