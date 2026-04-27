@@ -62,11 +62,10 @@ in
         "${mod}, M, exit"
 
         "${mod}, F, fullscreen"
-        "${mod}, P, exec, pkill hyprpicker || hyprpicker -a"
         "${mod}, SPACE, togglefloating"
         "SUPER, ${mod}, exec, ${ipc} launcher toggle"
         "${mod}, E, exec, thunar"
-        "${mod} SHIFT, P, exec, ${ipc} lockScreen lock"
+        "${mod}, P, exec, ${ipc} lockScreen lock"
 
         "${mod}, Q, killactive"
 
