@@ -1,4 +1,9 @@
-{ noctalia, config, ... }:
+{
+  noctalia,
+  config,
+  pkgs,
+  ...
+}:
 let
   configDir = config.xdg.configHome;
 in
@@ -8,15 +13,55 @@ in
     noctalia.homeModules.default
   ];
 
+  home.packages = with pkgs; [
+    grim # Screenshots
+    slurp # Region selector
+    wl-clipboard # Clipboard manager
+    tesseract # OCR
+    imagemagick # Image processing
+    zbar # QR/Barcodes
+    curl # Network upload
+    ffmpeg # Video processing
+    jq # Network parsing
+    wl-screenrec # Screen recording
+  ];
+  # programs.tesseract.languages = [
+  #   "eng"
+  #   "swe"
+  # ];
+
   # configure options
   programs.noctalia-shell = {
     enable = true;
+    plugins = {
+      sources = [
+        {
+          enabled = true;
+          name = "Official Noctalia Plugins";
+          url = "https://github.com/noctalia-dev/noctalia-plugins";
+        }
+      ];
+      states = {
+        screen-toolkit = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+      };
+      version = 2;
+    };
+
+    pluginSettings = {
+      screen-toolkit = {
+        # minimumThreshold = 25;
+        # hideBackground = true;
+      };
+    };
     settings = {
-      # configure noctalia here
       general = {
         avatarImage = "${configDir}/home-manager/images/tintin.jpg";
 
         animationSpeed = 2;
+        animationDisabled = true;
 
         showSessionButtonsOnLockScreen = false;
         showHibernateOnLockScreen = true;
@@ -52,6 +97,9 @@ in
               hideUnoccupied = false;
               id = "Workspace";
               labelMode = "none";
+            }
+            {
+              id = "plugin:screen-toolkit";
             }
           ];
           right = [

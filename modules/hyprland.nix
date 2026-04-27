@@ -7,9 +7,6 @@ let
 in
 {
   home.packages = with pkgs; [
-    hyprpicker
-    hyprshot
-
     gnome-themes-extra
     papirus-icon-theme
     adwaita-qt6
@@ -72,9 +69,6 @@ in
         "${mod} SHIFT, P, exec, ${ipc} lockScreen lock"
 
         "${mod}, Q, killactive"
-
-        "${mod}, PRINT, exec, hyprshot -m window --freeze -o $SCREENSHOTS"
-        ", PRINT, exec, hyprshot -m region --freeze -o $SCREENSHOTS"
 
         "${mod}, 1, workspace, 1"
         "${mod}, 2, workspace, 2"

@@ -47,7 +47,8 @@
 
     conda
     ollama
-    nodejs
+    # nodejs
+    nodejs_25
 
     tree-sitter
     sqlite
